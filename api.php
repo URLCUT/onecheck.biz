@@ -110,7 +110,6 @@ $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, 'https://offers.meditopia.com/subscribe/pay?lang=tr&code=&affcode=web');
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_PROXY, 'http://zproxy.lum-superproxy.io:22225');
-curl_setopt($ch, CURLOPT_PROXYUSERPWD, 'lum-customer-hl_18590c8f-zone-static-country-tr:qxo9v2gkpnav');
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_TIMEOUT, 5);
 
