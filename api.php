@@ -1,24 +1,7 @@
 <?php
 
-include'core/config.php';
-$username  = $_SESSION["username"];
-$kbilgi= $vt->query("select * from users where username='$username'")->fetch();
-$bakim= $vt->query("select * from genel where name='bakim'")->fetch();
-
-if(!isset($_SESSION["username"])){
-    echo "YETKİSİZ İŞLEM İP ADRESİ LOGLANDI";
-}elseif ($kbilgi["status"] <= 0) {
-    echo "YETKİSİZ İŞLEM İP ADRESİ LOGLANDI";
-}elseif ($bakim["value"] >= 1) {
-    echo "web sitemiz şuan bakımdadır";
-}elseif (!isset($_GET["lista"])){
-    echo "YETKİSİZ İŞLEM İP ADRESİ LOGLANDI";
-}
-else{
 
 
-
-$islem= $vt->query("select * from genel where name='islem'")->fetch();
 
 
 error_reporting(0);
@@ -136,10 +119,7 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 curl_setopt($ch, CURLOPT_POSTFIELDS, 'ad=1MonthFree&cardHolderName=Ayaz+yildiz&cardNumber='.$cc.'&cardExpirationMonth='.$mes.'&cardExpirationYear='.$ano.'&cardCVV='.$cvv.'');
 $result = curl_exec($ch);
 curl_close($ch);
-$islem = $islem["value"] + 1 ;
-$islem = "UPDATE genel SET value='$islem' where name='islem'";
-                if ($vt->query($islem)===true) {
-                }
+
 
 
 $cctwo = substr("$cc", 0, 6);
@@ -189,5 +169,5 @@ if(strpos($result, '"status":0')) {
   ob_flush();
   echo $result;
 
-}
+
 ?>
